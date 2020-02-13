@@ -1,6 +1,5 @@
 package com.ckopecky.qwtakehome;
 
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,16 +17,16 @@ import java.util.List;
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.MyViewHolder> {
     private List<AlbumModel> albumList;
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView artistName, releaseDate, name, copyright;
+        TextView artistName, name, ranking;
         ImageView imageView;
         String url;
         MyViewHolder(View view) {
             super(view);
+            ranking = view.findViewById(R.id.ranking);
             artistName = view.findViewById(R.id.artist_name);
-            releaseDate = view.findViewById(R.id.release_date);
             name = view.findViewById(R.id.name);
-            copyright = view.findViewById(R.id.copyright);
-            imageView = (ImageView) view.findViewById(R.id.album_image_url);         }
+            imageView = (ImageView) view.findViewById(R.id.album_image_url);
+        }
     }
 
     public AlbumAdapter(List<AlbumModel> albumList) {
@@ -45,11 +44,12 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         AlbumModel album = albumList.get(position);
+        //this is basically the equivalennt of the render method -- gives us a visual representation of our layout.
         holder.artistName.setText(album.getArtistName());
-        holder.releaseDate.setText(album.getReleaseDate());
         holder.name.setText(album.getName());
-        holder.copyright.setText(album.getCopyright());
+        holder.ranking.setText(album.getRanking() + ".");
         String url = album.getArtworkUrl100();
+        //use Picasso to render the image to the screen
         Picasso.get().load(url).resize(500, 500).into(holder.imageView);
 
 

@@ -1,10 +1,12 @@
 package com.ckopecky.qwtakehome;
 
+//This is our AlbumModel class
 public class AlbumModel {
+    //instantiate our needed vars
+    private String artistName, id, releaseDate, name, copyright, artistUrl, artworkUrl100, url, ranking;
 
-    private String artistName, id, releaseDate, name, copyright, artistUrl, artworkUrl100, url;
-
-    public AlbumModel(String artistName, String releaseDate, String name, String copyright, String artistUrl, String artworkUrl100, String id) {
+    //this is our constructor
+    public AlbumModel() {
         this.artistName = artistName;
         this.releaseDate = releaseDate;
         this.name = name;
@@ -12,7 +14,10 @@ public class AlbumModel {
         this.artistUrl = artistUrl;
         this.artworkUrl100 = artworkUrl100;
         this.id = id;
+        this.ranking = ranking;
     }
+
+    //our getters and setters for our album class
     public String getArtistName() {
         return artistName;
     }
@@ -69,8 +74,17 @@ public class AlbumModel {
         this.url = url;
     }
 
+    public String getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(String ranking) {
+        this.ranking = ranking;
+    }
+
+    //this is a string representation of our class -- it's essentially like "repr" method in Python.
     @Override
     public String toString() {
-        return "Album [artistName=" + artistName + ", id=" + id + ", releaseDate=" + releaseDate + ", name=" + name + ", copyright=" + copyright + ", artistUrl=" + artistUrl + ", artworkUrl100="  + artworkUrl100 + ", url=" + url;
+        return "Album [ranking=" + ranking + ", artistName=" + artistName + ", id=" + id + ", releaseDate=" + releaseDate + ", name=" + name + ", copyright=" + copyright + ", artistUrl=" + artistUrl + ", artworkUrl100="  + artworkUrl100 + ", url=" + url;
     }
 }
