@@ -2,9 +2,9 @@ package com.ckopecky.qwtakehome;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,11 +29,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements  AlbumAdapter.OnPicListener {
     //instantiate variables to be used in file.
     private String myResponse;
     //This list extends from AlbumModel
-    private List<AlbumModel> albumList = new ArrayList<>();
+    private final List<AlbumModel> albumList = new ArrayList<>();
     private AlbumAdapter albumAdapter;
     private int ranking;
 
@@ -48,19 +48,18 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
         //This is a custom adapter to allow for our results array to be passed to the recycler view.
-        albumAdapter = new AlbumAdapter(albumList);
+        albumAdapter = new AlbumAdapter(albumList,  this);
 
         LinearLayoutManager albumLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(albumLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(albumAdapter);
 
+
         //this invokes our prep album data function below.
         prepareAlbumData();
+
     }
-
-
-
         private void prepareAlbumData() {
 
             //prepare network call using OkHttp
@@ -101,17 +100,19 @@ public class MainActivity extends AppCompatActivity {
                                     for(int i = 0; i < jsonArray.length(); i++) {
                                         String jsonAlbum;
                                         jsonAlbum = jsonArray.getString(i);
-                                        AlbumModel album = gson.fromJson(jsonAlbum, AlbumModel.class);
-                                        ranking = new Integer (i + 1);
+                                        final AlbumModel album = gson.fromJson(jsonAlbum, AlbumModel.class);
+                                        ranking = i + 1;
                                         //I use the index to obtain a ranking so that we don't have just a bunch of objects floating on page. So that there is order
                                         String strRanking = Integer.toString(ranking);
                                         //add ranking to album instance
                                         album.setRanking(strRanking);
                                         //add album to our list that will be displayed.
                                         albumList.add(album);
+
                                     }
                                     //this is essentially a next() --> so we can go on to the next thing.
                                     albumAdapter.notifyDataSetChanged();
+
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -122,6 +123,19 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+        }
+
+        public void onPicClick(int position) {
+            Intent intent = new Intent(this, DetailActivity.class);
+            intent.putExtra("ALBUM_TITLE", albumList.get(position).getName());
+            intent.putExtra("ARTIST_NAME", albumList.get(position).getArtistName());
+            intent.putExtra("RELEASE_DATE", albumList.get(position).getReleaseDate());
+            intent.putExtra("COPYRIGHT", albumList.get(position).getCopyright());
+            intent.putExtra("URL", albumList.get(position).getUrl());
+            intent.putExtra("ARTIST_URL", albumList.get(position).getArtistUrl());
+            intent.putExtra("IMAGE", albumList.get(position).getArtworkUrl100());
+            startActivity(intent);
+
         }
 }
 

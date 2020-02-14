@@ -16,8 +16,6 @@ public class AlbumModel {
         this.id = id;
         this.ranking = ranking;
     }
-
-    //our getters and setters for our album class
     public String getArtistName() {
         return artistName;
     }
@@ -82,7 +80,6 @@ public class AlbumModel {
         this.ranking = ranking;
     }
 
-    //this is a string representation of our class -- it's essentially like "repr" method in Python.
     @Override
     public String toString() {
         return "Album [ranking=" + ranking + ", artistName=" + artistName + ", id=" + id + ", releaseDate=" + releaseDate + ", name=" + name + ", copyright=" + copyright + ", artistUrl=" + artistUrl + ", artworkUrl100="  + artworkUrl100 + ", url=" + url;
