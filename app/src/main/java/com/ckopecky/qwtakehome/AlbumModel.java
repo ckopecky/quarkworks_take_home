@@ -16,7 +16,7 @@ public class AlbumModel {
         this.id = id;
         this.ranking = ranking;
     }
-    public String getArtistName() {
+    String getArtistName() {
         return artistName;
     }
 
@@ -24,7 +24,7 @@ public class AlbumModel {
         this.artistName = artistName;
     }
 
-    public String getReleaseDate() {
+    String getReleaseDate() {
         return releaseDate;
     }
 
@@ -40,7 +40,7 @@ public class AlbumModel {
         this.name = name;
     }
 
-    public String getCopyright() {
+    String getCopyright() {
         return copyright;
     }
 
@@ -48,7 +48,7 @@ public class AlbumModel {
         this.copyright = copyright;
     }
 
-    public String getArtistUrl() {
+    String getArtistUrl() {
         return artistUrl;
     }
 
@@ -56,7 +56,7 @@ public class AlbumModel {
         this.artistUrl = artistUrl;
     }
 
-    public String getArtworkUrl100() {
+    String getArtworkUrl100() {
         return artworkUrl100;
     }
 
@@ -64,7 +64,7 @@ public class AlbumModel {
         this.artworkUrl100 = artworkUrl100;
     }
 
-    public String getUrl() {
+    String getUrl() {
         return url;
     }
 
@@ -72,11 +72,11 @@ public class AlbumModel {
         this.url = url;
     }
 
-    public String getRanking() {
+    String getRanking() {
         return ranking;
     }
 
-    public void setRanking(String ranking) {
+    void setRanking(String ranking) {
         this.ranking = ranking;
     }
 

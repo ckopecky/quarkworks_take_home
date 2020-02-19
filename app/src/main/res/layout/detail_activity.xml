@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
@@ -13,8 +12,8 @@
         android:id="@+id/detail_album_image_url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:contentDescription="Album Art"
+        android:layout_marginTop="0dp"
+        android:contentDescription="@string/album_art"
         android:gravity="start"
 
         />
@@ -25,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="top"
-        android:text="Name"
+        android:text="@string/name"
         android:layout_weight="0"
         android:textAppearance="?android:attr/textAppearanceListItem"
         android:textStyle="bold" />
@@ -36,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top"
-        android:text="Artist"
+        android:text="@string/artist"
         android:textAppearance="?android:attr/textAppearanceListItemSecondary" />
 
     <TextView
@@ -45,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top"
-        android:text="Release_Date"
+        android:text="@string/release_date"
         android:textAppearance="?android:attr/textAppearanceListItemSecondary" />
 
     <TextView
@@ -54,7 +53,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top"
-        android:text="Copyright"
+        android:text="@string/copyright"
+        android:textSize="9sp"
         android:textAppearance="?android:attr/textAppearanceListItemSecondary" />
 </LinearLayout>
 

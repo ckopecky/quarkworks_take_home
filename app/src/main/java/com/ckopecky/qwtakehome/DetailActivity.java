@@ -34,7 +34,6 @@ public class DetailActivity extends AppCompatActivity {
         String copyright = startIntent.getStringExtra("COPYRIGHT");
 
         artist_name.setText(artistName);
-        Log.d("albumtitle", " is it null? " + albumTitle);
         album_title.setText(albumTitle);
         release_date.setText(releaseDate);
         detail_copyright.setText(copyright);

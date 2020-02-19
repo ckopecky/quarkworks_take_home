@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
     android:layout_alignParentStart="true"
-    android:layout_weight="4">
+    >
     <TextView
         android:id="@+id/ranking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ranking"
+        android:text="@string/ranking"
         android:paddingStart="10dp"
         android:paddingTop="20dp"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_weight="0"
         />
     <LinearLayout
         android:layout_weight="0"
@@ -28,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:contentDescription="Album Art"
+            android:contentDescription="@string/album_art"
             android:gravity="start"
 
             />
@@ -39,18 +36,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="top"
-            android:text="Name"
-            android:layout_weight="0"
+            android:text="@string/name"
             android:textAppearance="?android:attr/textAppearanceListItem"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/artist_name"
-            android:layout_weight="0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top"
-            android:text="Artist"
+            android:text="@string/artist"
             android:textAppearance="?android:attr/textAppearanceListItemSecondary" />
     </LinearLayout>
 

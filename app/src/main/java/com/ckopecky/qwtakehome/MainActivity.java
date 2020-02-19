@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,22 +39,25 @@ public class MainActivity extends AppCompatActivity implements  AlbumAdapter.OnP
     //this is basically the equivalent of ComponentDidMount or the useEffect hook in React.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //this sets our content view to the matching xml file below.
+        //this sets our content view to the matching xml file.
         setContentView(R.layout.activity_main);
 
-        //utilize a Recycler View to output a list to the UI.
+        //utilize a Recycler View to output a list to the UI. This is the NEW ListView
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
-        //This is a custom adapter to allow for our results array to be passed to the recycler view.
+        //This is a custom adapter to allow for our results array to be passed to the recycler view,
+        // as well as our onClickListener for the individual pictures in our list.
+
         albumAdapter = new AlbumAdapter(albumList,  this);
 
+        //helps in positioning the items in a scrolling list
         LinearLayoutManager albumLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(albumLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(albumAdapter);
+        // next iteration: investigate recyclerView.OnItemTouchListener...
 
 
-        //this invokes our prep album data function below.
+        //this invokes our prep album data function below...initializes our data
         prepareAlbumData();
 
     }
@@ -109,9 +110,9 @@ public class MainActivity extends AppCompatActivity implements  AlbumAdapter.OnP
                                         //add album to our list that will be displayed.
                                         albumList.add(album);
 
+                                        albumAdapter.notifyItemInserted(i);
+
                                     }
-                                    //this is essentially a next() --> so we can go on to the next thing.
-                                    albumAdapter.notifyDataSetChanged();
 
 
                                 } catch (JSONException e) {
