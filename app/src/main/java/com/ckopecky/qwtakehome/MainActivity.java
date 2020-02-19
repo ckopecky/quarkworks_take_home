@@ -128,13 +128,14 @@ public class MainActivity extends AppCompatActivity implements  AlbumAdapter.OnP
 
         public void onPicClick(int position) {
             Intent intent = new Intent(this, DetailActivity.class);
-            intent.putExtra("ALBUM_TITLE", albumList.get(position).getName());
-            intent.putExtra("ARTIST_NAME", albumList.get(position).getArtistName());
-            intent.putExtra("RELEASE_DATE", albumList.get(position).getReleaseDate());
-            intent.putExtra("COPYRIGHT", albumList.get(position).getCopyright());
-            intent.putExtra("URL", albumList.get(position).getUrl());
-            intent.putExtra("ARTIST_URL", albumList.get(position).getArtistUrl());
-            intent.putExtra("IMAGE", albumList.get(position).getArtworkUrl100());
+            intent.putExtra("ALBUM", albumList.get(position));
+//            intent.putExtra("ALBUM_TITLE", albumList.get(position).getName());
+//            intent.putExtra("ARTIST_NAME", albumList.get(position).getArtistName());
+//            intent.putExtra("RELEASE_DATE", albumList.get(position).getReleaseDate());
+//            intent.putExtra("COPYRIGHT", albumList.get(position).getCopyright());
+//            intent.putExtra("URL", albumList.get(position).getUrl());
+//            intent.putExtra("ARTIST_URL", albumList.get(position).getArtistUrl());
+//            intent.putExtra("IMAGE", albumList.get(position).getArtworkUrl100());
             startActivity(intent);
 
         }

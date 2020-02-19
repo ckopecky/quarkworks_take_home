@@ -12,6 +12,8 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
+
 public class DetailActivity extends AppCompatActivity {
 
     @Override
@@ -26,18 +28,17 @@ public class DetailActivity extends AppCompatActivity {
         ImageView album_image = findViewById(R.id.detail_album_image_url);
         //get Intent
 
-        Intent startIntent = getIntent();
-        String albumImage = startIntent.getStringExtra("IMAGE");
-        String artistName = startIntent.getStringExtra("ARTIST_NAME");
-        String albumTitle = startIntent.getStringExtra("ALBUM_TITLE");
-        String releaseDate = startIntent.getStringExtra("RELEASE_DATE");
-        String copyright = startIntent.getStringExtra("COPYRIGHT");
+        //saving into a quick disc cache.
+        AlbumModel album = (AlbumModel) getIntent().getSerializableExtra("ALBUM");
 
-        artist_name.setText(artistName);
-        album_title.setText(albumTitle);
-        release_date.setText(releaseDate);
-        detail_copyright.setText(copyright);
-        Picasso.get().load(albumImage).resize(1000,1000).into(album_image);
+
+        artist_name.setText(album.getArtistName());
+        album_title.setText(album.getName());
+        release_date.setText(album.getReleaseDate());
+        detail_copyright.setText(album.getCopyright());
+        Picasso.get().load(album.getArtworkUrl100()).resize(1000,1000).into(album_image);
+        setTitle(album.getName() + " - " + album.getArtistName());
+
 
     }
 }

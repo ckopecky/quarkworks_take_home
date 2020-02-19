@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +59,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.MyViewHolder
         }
     }
 
+    //deferring responsibility to MainActivity
     public interface  OnPicListener {
         void onPicClick(int position);
     }
@@ -77,6 +79,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.MyViewHolder
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.activity_listview, parent, false);
                 // return a new holder instance
+                Log.i("Run!", "Adapter run!");
                 return new MyViewHolder(itemView, onPicListener);
     }
 
@@ -92,6 +95,8 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.MyViewHolder
         String url = album.getArtworkUrl100();
         //use Picasso to render the image to the screen
         Picasso.get().load(url).resize(700, 700).into(holder.imageView);
+        Log.i("Run!", "Bind run!");
+
     }
 
     //returns the total count of items in the list.

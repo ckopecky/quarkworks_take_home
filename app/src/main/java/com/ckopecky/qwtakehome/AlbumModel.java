@@ -1,7 +1,9 @@
 package com.ckopecky.qwtakehome;
 
+import java.io.Serializable;
+
 //This is our AlbumModel class
-public class AlbumModel {
+public class AlbumModel implements Serializable {
     //instantiate our needed vars
     private String artistName, id, releaseDate, name, copyright, artistUrl, artworkUrl100, url, ranking;
 
